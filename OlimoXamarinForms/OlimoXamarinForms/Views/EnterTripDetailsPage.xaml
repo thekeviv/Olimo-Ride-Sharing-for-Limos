@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    x:Class="OlimoXamarinForms.Views.EnterTripDetailsPage"
+    Visual="Material"
+    HasKeyboardOffset="False"
+    HasSystemPadding="True"
+    >
+    <!--You can set an animation in the xaml file or in the csharp code behind-->
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation 
+            PositionIn="Center"
+            PositionOut="Center"
+            ScaleIn="1.2"
+            ScaleOut="0.8"
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"/>
+    </pages:PopupPage.Animation>
+    <!--You can use any elements here which are extended from Xamarin.Forms.View-->
+    <Frame Margin="10,30,10,0"
+           BorderColor="Black"
+           CornerRadius="25">
+        <Grid x:Name="addressScreen"
+              BackgroundColor="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80*"/>
+                <RowDefinition Height="20*"/>
+            </Grid.RowDefinitions>
+            <StackLayout Orientation="Vertical"
+                             Grid.Row="0"
+                             Margin="0,40,0,0">
+                <Label Text="Enter your Trip Details"
+                           FontSize="Large"
+                           HorizontalOptions="CenterAndExpand"
+                           Margin="0,0,0,20"/>
+                <StackLayout Margin="20, 10, 20, 0">
+                    <Entry x:Name="searchBarOrigin"
+                           Text="{Binding PickupLocation, Mode=TwoWay}"
+                           Placeholder="Enter Pickup Location"
+                           TextChanged="searchBar_TextChanged_Origin"
+                           BackgroundColor="White"
+                           />
+                    <CollectionView x:Name="searchResultsOrigin"
+                                  IsVisible="False"
+                                  ItemsSource="{Binding AutoCompletePredictionsListOrigin}"
+                                  SelectionMode="Single"
+                                  SelectionChanged="searchResultsOrigin_SelectionChanged">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame BorderColor="Gray">
+                                    <Label Text="{Binding}"/>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+                <StackLayout Margin="20,10,20,0">
+                    <Entry x:Name="searchBarDestination"
+                           Placeholder="Enter Destination Location"
+                           Text="{Binding DestinationLocation, Mode=TwoWay}"
+                           TextChanged="searchBar_TextChanged_Destination"
+                           BackgroundColor="White"
+                           />
+                    <CollectionView x:Name="searchResultsDestination"
+                                    IsVisible="False"
+                                    ItemsSource="{Binding AutoCompletePredictionsListDestination}"
+                                    SelectionMode="Single"
+                                    SelectionChanged="searchResultsDestination_ItemSelected">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame BorderColor="Gray">
+                                    <Label Text="{Binding}"/>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal"
+                                 Margin="25,10,20,0">
+                    <Label Text="Enter Max Passengers"
+                               VerticalOptions="CenterAndExpand"/>
+                    <Entry x:Name="maxPassengers"
+                           MaxLength="2"
+                           WidthRequest="120"
+                           Keyboard="Numeric"
+                           BackgroundColor="White"
+                           Text="{Binding MaxTripPassengers, Mode=TwoWay}"
+                           TextChanged="maxPassengers_TextChanged"
+                           />
+                    <Stepper x:Name="maxStepper"
+                             HorizontalOptions="EndAndExpand"
+                             Increment="1"
+                             Maximum="30"
+                             ValueChanged="stepperValueChanged"
+                             Value="{Binding MaxTripPassengers}"
+                             >
+
+                    </Stepper>
+                </StackLayout>
+
+                <Label Text="Pickup Date"
+                       Margin="25, 10, 20, 0"/>
+                <DatePicker Date="{Binding TripDateAndTime, Mode=TwoWay}"
+                            Margin="20, 0, 20, 0"                               
+                            Format="D"
+                            BackgroundColor="White"/>
+                <Label Text="Pickup Time"
+                       Margin="25, 10, 20, 0"/>
+                <TimePicker Time="{Binding TripTime, Mode=TwoWay}"
+                            Margin="20, 0, 20, 0"
+                            Format="T"
+                            BackgroundColor="White"/>
+
+            </StackLayout>
+
+            <Button Text="Done"
+                        Grid.Row="1"
+                        Margin="20, 20, 20, 40"
+                        Clicked="closeAddressScreen"
+                        VerticalOptions="CenterAndExpand"
+                        Style="{StaticResource ButtonStyle}"/>
+        </Grid>
+    </Frame>
+</pages:PopupPage>

@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="OlimoXamarinForms.Views.PaymentOptions"
+             Title="Payment Options"
+             >
+    <ContentPage.Content>
+        <StackLayout Margin="20,10,20,0">
+            <ActivityIndicator IsRunning="{Binding IsBusy}"
+                               IsVisible="{Binding IsBusy}"/>
+            <Label Text="Existing Payment Methods"
+                   FontSize="Medium"
+                   HorizontalOptions="CenterAndExpand"/>
+            <CollectionView x:Name="paymentOptions"
+                            IsEnabled="True"
+                            IsVisible="{Binding PaymentMethodsAvailable}"
+                            ItemsSource="{Binding PaymentMethods}"
+                            Margin="10,20,10,0"
+                            >
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="10"
+                                       Orientation="Vertical"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Margin="5,20,5,0"
+                               CornerRadius="25"
+                               HeightRequest="40"
+                               BorderColor="#4F8BC7">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20*"/>
+                                    <ColumnDefinition Width="60*"/>
+                                    <ColumnDefinition Width="20*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50*"/>
+                                    <RowDefinition Height="50*"/>
+                                </Grid.RowDefinitions>
+                                <Image x:Name="MastercardIcon"
+                                               Source="mastercard.png"
+                                               HorizontalOptions="Start"
+                                               Grid.Column="0"
+                                               Scale="1"
+                                               Grid.RowSpan="2"/>
+                                <Label Text="{Binding Card.Brand}"
+                                       Grid.Column="1"   
+                                       Grid.Row="0"
+                                       Margin="40,0,0,0"/>
+                                <Label Text="{Binding Card.Last4, StringFormat='**** **** **** {0:F2}'}"
+                                       Grid.Column="1"
+                                       Grid.Row="1"
+                                       Margin="40,0,0,0"/>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Label x:Name="paymentMethodsAvailable"
+                   FontSize="Medium"
+                   Text="No payment methods exist on your account."
+                   IsVisible="False"/>
+            <Button Text="Add New Card"
+                    Margin="0, 20, 0, 40"
+                    Clicked="AddNewPaymentMethod"
+                    Style="{StaticResource ButtonStyle}"
+                    />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

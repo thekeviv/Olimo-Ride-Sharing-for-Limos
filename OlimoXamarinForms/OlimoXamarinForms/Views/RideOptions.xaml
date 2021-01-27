@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="OlimoXamarinForms.Views.RideOptions"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="White">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="{Binding SelectedRideOption.RideName}"
+                   FontSize="Large"
+                   Padding="0, 20, 0, 0"
+                   HorizontalOptions="Center"/>
+            <Label Text="{Binding SelectedRideOption.RideClass, StringFormat='{0} Class'}"
+                   FontSize="Medium"
+                   HorizontalOptions="Center"/>
+            <Image Source="{Binding SelectedRideOption.ImageName}"
+                   HeightRequest="140"
+                   Margin="10, 20, 10, 20"/>
+            <StackLayout Orientation="Horizontal">
+                <ImageButton Source="leftarrow.png"
+                             HorizontalOptions="StartAndExpand"
+                             Margin="25, 0,0,0"
+                             Clicked="SelectPreviousRideOption"
+                             BackgroundColor="White"
+                            />
+                <ImageButton Source="rightarrow.png"
+                             HorizontalOptions="EndAndExpand"
+                             Margin="0,0,25,0"
+                             Clicked="SelectNextRideOption"
+                             BackgroundColor="White" 
+                       />
+            </StackLayout>
+            <CollectionView x:Name="ridesCollection"
+                            ItemsSource="{Binding AvailableRideOptions}"
+                            HorizontalOptions="Center"
+                            Margin="20,10,20,10"
+                            SelectionMode="Single"
+                            SelectionChanged="ridesCollection_SelectionChanged"
+                            SelectedItem="{Binding SelectedRideOption, Mode=TwoWay}"
+                            >
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal" 
+                                       ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="#4F8BC7"
+                               Padding="1,1,1,1"
+                               HorizontalOptions="Center">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.8*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Image Source="{Binding ImageName}"
+                                       WidthRequest="80"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="Center"
+                                       Grid.Row="0"/>
+                                <StackLayout Grid.Row="1"
+                                             HorizontalOptions="CenterAndExpand">
+                                    <Label Text="{Binding RideCost, StringFormat='From {0:N0}/Hour'}"
+                                           HorizontalOptions="CenterAndExpand"/>
+                                    <Label Text="{Binding MaxNumberOfPassengers, StringFormat=' {0:N0} Max Passengers'}"
+                                           HorizontalOptions="CenterAndExpand"
+                                           />
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            
+            <Frame BorderColor="{StaticResource AppColor}"
+                   Margin="20, 0, 20, 0"
+                   Visual="Material">
+                <StackLayout Margin="20, 20, 20, 20"
+                         HorizontalOptions="Center">
+                    <Label Text="&#x2022; The ride includes 15 minutes waiting time by driver"
+                           HorizontalTextAlignment="Center"/>
+                    <Label Text="&#x2022; Chose between hourly prices or a fixed cost for the ride"
+                           HorizontalTextAlignment="Center"/>
+                    <Label Text="&#x2022;Gratuity options available from within the app"
+                           HorizontalTextAlignment="Center"/>
+                </StackLayout>
+            </Frame>
+            <Button Text="Select Car"
+                    Clicked="openRideSummaryPage"
+                    VerticalOptions="EndAndExpand"
+                    Margin="20, 20, 20, 40"
+                    Style="{StaticResource ButtonStyle}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

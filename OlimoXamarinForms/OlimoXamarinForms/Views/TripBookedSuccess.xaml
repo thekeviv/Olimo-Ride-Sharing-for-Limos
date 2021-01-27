@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             mc:Ignorable="d"
+             x:Class="OlimoXamarinForms.Views.TripBookedSuccess">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Score!"
+                   FontSize="Large"
+                   FontAttributes="Bold"
+                   VerticalOptions="Start"
+                   HorizontalOptions="CenterAndExpand"
+                   Margin="0,60,0,0"/>
+            <Label Text="Your Limo was booked successfully!"
+                   FontSize="Large"
+                   HorizontalTextAlignment="Center"/>
+
+            <forms:AnimationView x:Name="AnimationView"
+                         Animation="success.json"
+                         Loop="True"
+                         Scale="1.2"
+                         AutoPlay="True"
+                         Margin="0,20,0,50"
+                         VerticalOptions="FillAndExpand"
+                         HorizontalOptions="FillAndExpand" />
+            <Button Text="Home"
+                    Margin="30,30,30,0"
+                    Clicked="OpenHomePage"
+                    Style="{StaticResource ButtonStyle}"/>
+            <Button Text="Rides"
+                    Margin="30,30,30,150"
+                    Clicked="OpenRides"
+                    Style="{StaticResource ButtonStyle}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

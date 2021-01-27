@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="OlimoXamarinForms.Views.FutureTrips"
+             Title="Future Trips">
+    <ContentPage.Content>
+        <StackLayout Margin="0,10,0,0">
+            <ActivityIndicator IsRunning="{Binding IsBusy}"
+                               IsVisible="{Binding IsBusy}"/>
+            <CollectionView Margin="20,10,20,10"
+                            ItemsSource="{Binding FutureTrips}"
+                            IsVisible="{Binding FutureRidesFound}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <ContentView Padding="10">
+                            <Frame BorderColor="#4F8BC7"
+                                   CornerRadius="25">
+                                <StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding BookingTime}"/>
+                                        <Label Text="{Binding TripBasePrice}"
+                                           HorizontalOptions="EndAndExpand"/>
+                                    </StackLayout>
+                                    <Label Text="{Binding VehicleClass}"/>
+                                    <Label Text="{Binding DestinationLocation}"/>
+                                </StackLayout>
+                            </Frame>
+                        </ContentView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <StackLayout IsVisible="{Binding FutureRidesTextEnable}"
+                         Margin="30"
+                         HorizontalOptions="CenterAndExpand">
+                <Label Text="It's lonely in here. Why not treat yourself today?"
+                       FontSize="Medium"
+                       HorizontalTextAlignment="Center"/>
+                <Button Text="Book a Limo"
+                        Margin="0, 40, 0, 0"
+                        Style="{StaticResource ButtonStyle}"
+                        Clicked="OpenHomePage"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.olimoxamarinforms">
+   <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="28" />
+   <application android:label="OlimoXamarinForms.Android">
+     <uses-library android:name="org.apache.http.legacy" android:required="false" />
+     <meta-data android:name="com.google.android.geo.API_KEY" android:value="Add Google Maps Here" />
+     <activity android:name="microsoft.identity.client.BrowserTabActivity">
+       <intent-filter>
+         <action android:name="android.intent.action.VIEW" />
+         <category android:name="android.intent.category.DEFAULT" />
+         <category android:name="android.intent.category.BROWSABLE" />
+         <data android:scheme="msala607d349-7516-48d4-bec5-a6cdb78684e6" android:host="auth" />
+       </intent-filter>
+     </activity>
+   </application>
+
+
+   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+   <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+   <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+   <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+   <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+   <uses-permission android:name="android.permission.INTERNET" />
+   <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+   <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+   <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+   <uses-feature android:name="android.hardware.location" android:required="false" />
+   <uses-feature android:name="android.hardware.location.gps" android:required="false" />
+   <uses-feature android:name="android.hardware.location.network" android:required="false" />
+</manifest>

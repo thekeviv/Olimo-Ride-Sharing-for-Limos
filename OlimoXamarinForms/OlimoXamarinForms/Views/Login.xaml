@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="OlimoXamarinForms.Views.Login"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White"
+             >
+    <ContentPage.Content>
+        <StackLayout>
+            <Image Source="logo.png"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="Start"
+                   Margin="80,50,80,0"
+                   />
+            <Frame CornerRadius="50"
+                   Margin="30, 30, 30, 0"
+                   >
+                <StackLayout Margin="0,20,0,40">
+                    <Entry  Placeholder="Email"
+                        x:Name="email"
+                        Visual="Material"
+                        BackgroundColor="White"/>
+                    <Entry  Placeholder="Password"
+                        x:Name="password"
+                        Visual="Material"
+                        BackgroundColor="White"
+                        IsPassword="True"/>
+                </StackLayout>
+            </Frame>
+            <ActivityIndicator x:Name="IsBusy"
+                               IsVisible="False"
+                               IsRunning="False"
+                               />
+            <Button Text="Forgot Your Password?"
+                    BackgroundColor="White"
+                    Clicked="forgotPasswordClicked"/>
+            <Button x:Name="btnSignInSignOut"
+                        Clicked="SignIn_Clicked"
+                        Text="Login"
+                        Style="{StaticResource ButtonStyle}"
+                        Margin="30,20,30,0"/>
+            <Button x:Name="newAccount"
+                        Clicked="newUserSignUp"
+                        Text="Create new Account"
+                        Style="{StaticResource ButtonStyle}"
+                        Margin="30,60,30,100"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="OlimoXamarinForms.Views.NewUserSignUpPage"
+             Title="Register"
+             Visual="Material"
+             BackgroundColor="White">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Image Source="logo.png"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="Start"
+                   Margin="80,20,80,0"
+                   />
+                <Frame Margin="30, 20, 30, 0">
+                    <StackLayout>
+                        <Entry x:Name="name"
+                               Placeholder="Name"
+                               BackgroundColor="White"/>
+                        <Entry x:Name="email"
+                               Placeholder="Email"
+                               BackgroundColor="White"/>
+                        <Entry x:Name="password"
+                               Placeholder="Password"
+                               BackgroundColor="White"
+                               IsPassword="True"/>
+                        <StackLayout Orientation="Horizontal">
+                            <CheckBox x:Name="isDriver"/>
+                            <Label x:Name="signupAsDriver"
+                                   Text="Sign up as a driver?"
+                                   VerticalOptions="CenterAndExpand"
+                                   FontSize="Body"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <Button Text="Register"
+                        Clicked="registerNewAccount"
+                        Style="{StaticResource ButtonStyle}"
+                        Margin="30, 60, 30, 0"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

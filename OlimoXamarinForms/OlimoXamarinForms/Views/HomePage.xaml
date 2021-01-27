@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
+             mc:Ignorable="d"
+             BackgroundColor="{StaticResource AppColor}"
+             Visual="Material"
+             x:Class="OlimoXamarinForms.Views.HomePage">
+    <ContentPage.Content>
+        <Grid x:Name="homeScreen">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70*"/>
+                <RowDefinition Height="30*"/>
+            </Grid.RowDefinitions>
+            <StackLayout Orientation="Vertical"
+                             Grid.Row="0">
+                <maps:Map x:Name="map"        
+                          IsShowingUser="True"
+                          HorizontalOptions="FillAndExpand"
+                          CameraIdled="Handle_CameraIdled"
+                          PinClicked="Map_PinClicked"
+                          />
+            </StackLayout>
+            <StackLayout Grid.Row="1"
+                         BackgroundColor="White">
+                <Label Text="{Binding UserName}"
+                       FontAttributes="Bold"
+                       FontSize="20"
+                       Margin="0,20,0,15"
+                       HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="Start"
+                       TextColor="Black"/>
+                <Entry  x:Name="aEntry"
+                            Placeholder="Where to?"
+                            Text="{Binding DestinationLocation}"
+                            Margin="30, 0, 30, 0"
+                            BackgroundColor="White"
+                            Focused="openAddressScreen"
+                        />
+                <Button Text="Find my ride"
+                            Margin="30, 20, 30, 40"
+                            Clicked="showRideOptions"
+                            VerticalOptions="CenterAndExpand"
+                            Style="{StaticResource ButtonStyle}"/>
+
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="OlimoXamarinForms.Views.AddNewCard"
+             Title="Add New Card">
+    <ContentPage.Content>
+        <StackLayout Margin="20, 20, 20, 20">
+            <Entry x:Name="cardNumber"
+                   Text=""
+                   Placeholder="Card Number"
+                   Visual="Material"
+                   Keyboard="Numeric"
+                   BackgroundColor="White">
+            </Entry>
+            <StackLayout Orientation="Horizontal"
+                         Margin="0, 20, 0, 0">
+                <Entry x:Name="expiryMonth"
+                       Text=""
+                       Placeholder="MM"
+                       Keyboard="Numeric"
+                       Visual="Material"
+                       WidthRequest="70"
+                       BackgroundColor="White"
+                       >
+                </Entry>
+                <Entry x:Name="expiryYear"
+                       Text=""
+                       Placeholder="YYYY"
+                       Keyboard="Numeric"
+                       WidthRequest="100"
+                       Visual="Material"
+                       BackgroundColor="White"
+                       >
+                </Entry>
+                <Entry x:Name="cvv"
+                       Text=""
+                       Placeholder="CVV"
+                       Visual="Material"
+                       WidthRequest="70"
+                       BackgroundColor="White"
+                       Keyboard="Numeric">
+                </Entry>
+            </StackLayout>
+            <Button Text="Add New Card"
+                    Margin="0, 20, 0, 0"
+                    Clicked="AddNewPaymentMethod"
+                    Style="{StaticResource ButtonStyle}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

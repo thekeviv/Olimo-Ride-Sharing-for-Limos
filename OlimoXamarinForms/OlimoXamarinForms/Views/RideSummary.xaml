@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="OlimoXamarinForms.Views.RideSummary"
+             NavigationPage.HasNavigationBar="False"
+             Visual="Material">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40*"/>
+                </Grid.RowDefinitions>
+                <Frame x:Name="TripDetails"
+                       BorderColor="Black"
+                       Margin="10,10,10,10"
+                       CornerRadius="25"
+                       Grid.Row="0">
+                    <StackLayout>
+                        <Label Text="Trip Details"
+                               HorizontalOptions="CenterAndExpand"
+                               FontSize="Large"/>
+                        <Label Text="Here's a summary of your trip details, leave your driver a message for special accomodations."
+                               HorizontalTextAlignment="Center"
+                               Margin="0,5,0,5"
+                               FontSize="Medium"/>
+
+                        <Entry Placeholder="Customer Name"
+                               Text="Vivek Sharma"
+                               BackgroundColor="White"/>
+                        <Entry Placeholder="Pickup Location"
+                               Text="{Binding PickupLocation}"
+                               Margin="0,15,0,0"
+                               IsReadOnly="True"
+                               BackgroundColor="White"/>
+                        <Entry Placeholder="Destination Location"
+                               Text="{Binding DestinationLocation}"
+                               Margin="0,15,0,0"
+                               IsReadOnly="True"
+                               BackgroundColor="White"
+                               />
+                        <Entry Placeholder="Pickup Date"
+                               Text="{Binding TripDateAndTime, StringFormat='{0:MMMM dd, yyyy}', Mode=TwoWay}"
+                               Margin="0,15,0,0"
+                               BackgroundColor="White"
+                               />
+                        <Entry Placeholder="Pickup Time"
+                               Text="{Binding TripDateAndTime, StringFormat='{}{0:hh\\:mm tt}', Mode=TwoWay}"
+                               Margin="0,15,0,0"
+                               BackgroundColor="White"
+                               />
+                        <Editor x:Name="DriverMessage"
+                                Placeholder="Message for the Driver"
+                                Margin="0,15,0,0"
+                                AutoSize="TextChanges"
+                                BackgroundColor="White"/>
+                        <Button Text="Confirm"
+                                Clicked="SelectPaymentMethod"
+                                Margin="0,30,0,0"
+                                Style="{StaticResource ButtonStyle}"/>
+                    </StackLayout>
+                </Frame>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
